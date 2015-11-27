@@ -5,7 +5,7 @@ IMAGE="progrium/buildstep"
 
 CMD="apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*"
 
-ID=$(docker run -d $IMAGE /bin/sh -c "$CMD")
+ID=$(sudo docker run -d $IMAGE /bin/sh -c "$CMD")
 docker attach $ID
-test $(docker wait $ID) -eq 0
-docker commit $ID $IMAGE > /dev/null
+test $(sudo docker wait $ID) -eq 0
+sudo docker commit $ID $IMAGE > /dev/null
