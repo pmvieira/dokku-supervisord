@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-IMAGE="progrium/buildstep"
+IMAGE="gliderlabs/herokuish"
 
 CMD="apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*"
 
-ID=$(sudo docker run -d $IMAGE /bin/sh -c "$CMD")
+ID=$(docker run -d $IMAGE /bin/sh -c "$CMD")
 docker attach $ID
-test $(sudo docker wait $ID) -eq 0
+test $(docker wait $ID) -eq 0
 sudo docker commit $ID $IMAGE > /dev/null
