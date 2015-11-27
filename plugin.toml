@@ -1,0 +1,6 @@
+[plugin]
+name = "dokku-supervisord"
+description = "A plugin for dokku that injects supervisord to run applications"
+version = "0.4.1"
+website_url = "https://github.com/statianzo/dokku-supervisord"
+[plugin.config]
