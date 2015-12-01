@@ -3,7 +3,7 @@ set -e
 
 IMAGE="gliderlabs/herokuish"
 
-CMD="apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*"
+CMD="sed -i '$ d' /usr/sbin/policy-rc.d && echo exit 0 >> /usr/sbin/policy-rc.d && apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*"
 
 ID=$(docker run -d $IMAGE /bin/sh -c "$CMD")
 docker attach $ID
